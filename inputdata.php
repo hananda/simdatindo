@@ -30,6 +30,18 @@
 		{
 			include "barangret.php";
 		}
+		if($status == "dcbng")
+		{
+			include "addcabang.php";
+		}
+		if($status == "dket")
+		{
+			include "addketerangan.php";
+		}
+		if($status == "ddsr")
+		{
+			include "adddasar.php";
+		}
 		if($status == "")
 			{ 
 

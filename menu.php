@@ -7,6 +7,9 @@ if ($_SESSION[level] == "admin")
 	echo "<a href='user.php'>User<br></a>";
 	echo "<a href='listbarang.php'>Barang<br></a>";
 	echo "<a href='pilihlist.php'>List ATM<br></a>";
+	echo "<a href='cabang.php'>Cabang<br></a>";
+	echo "<a href='keterangan.php'>Keterangan<br></a>";
+	echo "<a href='dasar.php'>Dasar Barang masuk / keluar<br></a>";
 	echo "<a href='status.php'>Status<br></a>";
 	echo "<a href='laporan.php'>Laporan<br></a>";}
 if ($_SESSION[level] == "operator") 

@@ -58,6 +58,9 @@ include "atas.php";
 		  ?>
           <option value="dpart">Data Sparepart</option>
           <option value="datm">Data ATM</option>
+          <option value="dcbng">Data Cabang</option>
+          <option value="dket">Data Keterangan</option>
+          <option value="ddsr">Data Dasar Barang masuk / keluar</option>
           <option value="brgmsk">Barang Masuk</option>
           <option value="brgkel">Barang Keluar</option>
           <!-- <option value="brgret">Barang Return</option>  -->   
