@@ -7,6 +7,7 @@ include "koneksi.php";
 			$lokasi = $_POST['lokasi'];
 			$sn = $_POST['sn'];
 			$install_date = $_POST['install_date'];
+			$id_cabang = $_POST['id_cabang'];
  			
 			$query = "SELECT id_atm FROM tbl_atm WHERE id_atm = '$id_atm'";
 			$a=custom_query($query);
@@ -50,6 +51,11 @@ if (trim($install_date) == '')
 	{
 		$error[] = '- Tanggal Instalasi harus diisi';
 	}
+	
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus diisi';
+	}
 
 //dan seterusnya
 
@@ -61,7 +67,7 @@ if (isset($error)) {
 	maka perintah SQL INSERT bisa ditulis di sini
 	*/
  	
-			$query2 = "INSERT INTO tbl_atm (id_atm,bank,lokasi,sn,install_date) VALUES ('$id_atm','$bank', '$lokasi', '$sn','$install_date')";
+			$query2 = "INSERT INTO tbl_atm (id_atm,bank,lokasi,sn,install_date,id_cabang) VALUES ('$id_atm','$bank', '$lokasi', '$sn','$install_date','$id_cabang')";
 				$input=custom_query($query2);
 					
 	echo '<div align="center" style="color:green; font-size:15px;"><b>Data ATM berhasil di tambah. silakan klik <a href="pilihlist.php">disini</a> untuk melihat perubahan:</b></div><br />';

@@ -4,8 +4,8 @@ include "koneksi.php";
 error_reporting(0);
 $waktu=time()+25200;
 $expired=30;
-if ($_SESSION[level] == "admin")
-{
+// if ($_SESSION[level] == "admin")
+// {
 
 	if (empty($_SESSION['username']) AND empty($_SESSION['password']))
 	{
@@ -101,6 +101,29 @@ $(document).ready(function() {
       </span></label></td>
   </tr>
   <tr>
+    <td><strong>Cabang :</strong></td>
+    <td class="field">
+    <select name="id_cabang" id="id_cabang">
+      <option value="">- Pilih -</option>
+      <?php 
+      	$query = "SELECT * FROM tbl_cabang";
+      	if ($_SESSION[level] == "operator") 
+		{
+		  $query.= " WHERE id_cabang = ".$_SESSION['id_cabang'];
+		}
+		// echo $query;
+		$sql1 =  custom_query($query);
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+	  ?>
+    
+      <option value="<?php echo $r1['id_cabang'];?>"><?php echo $r1['nama_cabang'];?> </option><?php
+  }	
+  	  ?>
+    </select>
+    <strong> </strong></td>
+  </tr>
+  <tr>
     <td><strong>Serial Number :</strong></td>
     <td class="field"><span class="field">
       <input name="sn" type="text" id="sn" maxlength="10">
@@ -127,13 +150,13 @@ $(document).ready(function() {
     </div>
 	<?php 
 	}
-} 
-else 
-{ 
-	echo	"<script>
-				alert('Maaf anda tidak memiliki akses untuk melihat halaman ini, silakan login sebagai admin terlebih dahulu.');javascript:window.location='formlogin.php';
-			</script>";
-} 	
+// } 
+// else 
+// { 
+// 	echo	"<script>
+// 				alert('Maaf anda tidak memiliki akses untuk melihat halaman ini, silakan login sebagai admin terlebih dahulu.');javascript:window.location='formlogin.php';
+// 			</script>";
+// } 	
 	?>
 <div id="footer"></div>
 	</body>

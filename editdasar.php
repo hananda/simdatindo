@@ -53,6 +53,12 @@ $id = $_GET['id'] ;
     <td  class="field" width="255" bgcolor="#FFFFFF"><label for="username"></label>
       <input name="nmdasar" type="text" id="nmdasar" value="<?php echo $r['nama_dasar']; ?>" /></td>
   </tr>
+
+  <tr>
+    <td width="123"><strong>Jenis :</strong></td>
+        <td  class="field" width="255" bgcolor="#FFFFFF">
+      <select name="jenis"><option value="1" <?php echo $r['jenis'] == 1 ? "selected" : ""; ?>>Barang Masuk</option><option value="2" <?php echo $r['jenis'] == 1 ? "selected" : ""; ?>>Barang Keluar</option></select></td>
+  </tr>
   <tr>
     <td colspan="2"><div align="right">
       <strong>

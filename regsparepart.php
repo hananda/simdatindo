@@ -5,6 +5,7 @@ include "koneksi.php";
 			$pn = $_POST['pn'];
 			$description = $_POST['description'];
 			$jumlah = $_POST['jumlah'];
+			$id_cabang = $_POST['id_cabang'];
 			
 			$query = "SELECT part_number FROM tbl_barang WHERE part_number = '$pn'";
 			$a=custom_query($query);
@@ -30,6 +31,11 @@ if (trim($jumlah) == '')
 		$error[] = '- Jumlah barang harus diisi';
 	}
 
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus diisi';
+	}
+
 //dan seterusnya
 
 if (isset($error)) {
@@ -40,7 +46,7 @@ if (isset($error)) {
 	maka perintah SQL INSERT bisa ditulis di sini
 	*/
  	
-			$query1 = "INSERT INTO tbl_barang (part_number,description,jumlah) VALUES ('$pn','$description', '$jumlah')";
+			$query1 = "INSERT INTO tbl_barang (part_number,description,jumlah,id_cabang) VALUES ('$pn','$description', '$jumlah', '$id_cabang')";
 				$input=custom_query($query1);
 					
 	echo '<div align="center" style="color:green; font-size:15px;"><b>Data Sparepart Baru berhasil di tambah. silakan klik <a href="listbarang.php">disini</a> untuk melihat perubahan:</b></div><br />';

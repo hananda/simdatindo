@@ -50,6 +50,24 @@ include "atas.php";
   <option value="Bank Pundi">PUN</option>
   <option value="Bank Saudara">SDR</option>
   <option value="Sinarmas">SIN</option>
+    </select><br>
+    Cabang
+    <select name="id_cabang" id="id_cabang">
+      <?php 
+        $query = "SELECT * FROM tbl_cabang";
+        if ($_SESSION[level] == "operator") 
+    {
+      $query.= " WHERE id_cabang = ".$_SESSION['id_cabang'];
+    }
+    // echo $query;
+    $sql1 =  custom_query($query);
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+    ?>
+    
+      <option value="<?php echo $r1['id_cabang'];?>"><?php echo $r1['nama_cabang'];?> </option><?php
+  } 
+      ?>
     </select>
   <input type="submit" name="pilih" id="pilih" value="Pilih">
 </form></div></p>

@@ -5,6 +5,7 @@ include "koneksi.php";
 $task = $_GET['task'];
 if($task == 'tambah'){
 	$namadasar = $_POST['nmdasar'];
+	$jenis = $_POST['jenis'];
 	
 	$dbquery = "SELECT nama_dasar FROM tbl_dasar WHERE nama_dasar = '$namadasar'";
 	$a=custom_query($dbquery);
@@ -15,7 +16,7 @@ if($task == 'tambah'){
 		}
 		if(trim(mysqli_num_rows($a)>0))
 		{
-			$error[]= '- Nama dasar sudah ada, silakan input username yang lain.';
+			$error[]= '- Nama dasar sudah ada, silakan input yang lain.';
 		}
 
 	//dan seterusnya
@@ -28,7 +29,7 @@ if($task == 'tambah'){
 		maka perintah SQL INSERT bisa ditulis di sini
 		*/
 	 	
-				$dbinput = "INSERT INTO tbl_dasar (nama_dasar)VALUES ('$namadasar')";		
+				$dbinput = "INSERT INTO tbl_dasar (nama_dasar,jenis)VALUES ('$namadasar','$jenis')";		
 		$input=custom_query($dbinput);
 						
 		echo '<div align="center" style="color:green; font-size:15px;"><b>Data User berhasil di tambah. silakan klik <a href="dasar.php">disini </a>untuk melihat perubahan</b></div><br />';
@@ -40,7 +41,8 @@ if($task == 'tambah'){
 	{
 	$nmdasar = $_POST['nmdasar'];
 	$iddasar = $_POST['iddasar'];
-	$dquery = "UPDATE tbl_dasar SET nama_dasar='$nmdasar' WHERE id_dasar='$iddasar'";
+	$jenis = $_POST['jenis'];
+	$dquery = "UPDATE tbl_dasar SET nama_dasar='$nmdasar',jenis='$jenis' WHERE id_dasar='$iddasar'";
 
 	$sql= custom_query($dquery);
 		if ($sql)

@@ -42,17 +42,26 @@ else{
     <td width="59"><div align="center"><strong>No. Form</strong></div></td>
     <td width="109"><div align="center"><strong>Part Number</strong></div></td>
     <td width="143"><div align="center"><strong>Description</strong></div></td>
+    <td width="143"><div align="center"><strong>Dasar barang keluar</strong></div></td>
     <td width="94"><div align="center"><strong>Problem</strong></div></td>
     <td width="77"><div align="center"><strong>Operator</strong></div></td>
+    <td width="77"><div align="center"><strong>Cabang</strong></div></td>
     <td width="77"><div align="center"><strong>Engineer</strong></div></td>
     <td width="47"><div align="center"><strong>Jumlah</strong></div></td>
     <td width="130"><div align="center"><strong>Tanggal Keluar</strong></div></td>
     <td width="140"><div align="center"><strong>Keterangan</strong></div></td>
   </tr>
   <?php
-  
+  $where = "";
+    if ($_SESSION[level] == "operator") 
+    {
+      $where = " WHERE tbl_det_keluar.id_cabang = ".$_SESSION['id_cabang'];
+    }
   $sql =  custom_query("SELECT * 
-FROM  `tbl_det_keluar` 
+FROM  `tbl_det_keluar` LEFT JOIN tbl_keterangan on keterangan = id_keterangan 
+LEFT JOIN tbl_cabang on tbl_det_keluar.id_cabang = tbl_cabang.id_cabang
+LEFT JOIN tbl_dasar on tbl_det_keluar.id_dasar = tbl_dasar.id_dasar
+$where
 ORDER BY  `tbl_det_keluar`.`no_form_k` DESC");  
   while ($r = mysqli_fetch_array($sql))
   {
@@ -61,12 +70,14 @@ ORDER BY  `tbl_det_keluar`.`no_form_k` DESC");
     <td><div align="center"><?php echo  $r['no_form_k']; ?></div></td>
     <td><div align="center"><?php echo $r['part_number']; ?></div></td>
     <td><?php echo $r['description']; ?></td>
+    <td><?php echo $r['nama_dasar']; ?></td>
     <td><div align="center"><?php echo $r['problem']; ?></div></td>
     <td><div align="center"><?php echo $r['username']; ?></div></td>
+    <td><div align="center"><?php echo $r['nama_cabang']; ?></div></td>
     <td><div align="center"><?php echo $r['nama_karyawan']; ?></div></td>
     <td><div align="center"><?php echo $r['jumlah']; ?></div></td>
     <td><div align="center"><?php echo $r['tgl_keluar']; ?></div></td>
-    <td><div align="center"><?php echo $r['keterangan']; ?></div></td>
+    <td><div align="center"><?php echo $r['nama_keterangan']; ?></div></td>
   <?php
   if (($_SESSION[level] == "admin") || ($_SESSION[level] == "operator"))
   	{

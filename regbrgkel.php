@@ -14,6 +14,8 @@ include "koneksi.php";
 			$username = $_POST['id_user'];
 			$tgl_keluar = $_POST['tgl_keluar'];
 			$keterangan = $_POST['keterangan'];
+			$id_cabang = $_POST['id_cabang'];
+			$id_dasar = $_POST['id_dasar'];
 			
 			$dbquery = "SELECT no_form_k FROM tbl_det_keluar WHERE no_form_k = '$noform'";
 			$a=custom_query($dbquery);
@@ -53,6 +55,16 @@ if (trim($tgl_keluar) == '')
 		$error[] = '- Tanggal Keluar harus diisi';
 	}
 
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus diisi';
+	}
+
+if (trim($id_dasar) == '')
+	{
+		$error[] = '- dasar barang keluar harus diisi';
+	}
+
 //dan seterusnya
 
 if (isset($error)) 
@@ -81,7 +93,7 @@ else
 		$sqlupdate = "UPDATE tbl_barang SET jumlah = '$ok' WHERE part_number = '$part_number'";
 		$jmlupdate = custom_query($sqlupdate);
 	
-		$dbinput = "INSERT INTO `tbl_det_keluar`(`no_form_k`, `part_number`, `description`, `jumlah`, `problem`, `id_atm`, `lokasi`, `nama_karyawan`, `alamat`, `username`, `tgl_keluar`, `keterangan`) VALUES ('$noform','$part_number','$deskripsi','$jumlah','$problem','$id_atm','$lokasi','$nama_karyawan','$alamat','$username','$tgl_keluar','$keterangan')";		
+		$dbinput = "INSERT INTO `tbl_det_keluar`(`no_form_k`, `part_number`, `description`, `jumlah`, `problem`, `id_atm`, `lokasi`, `nama_karyawan`, `alamat`, `username`, `tgl_keluar`, `keterangan`, `id_dasar`, `id_cabang`) VALUES ('$noform','$part_number','$deskripsi','$jumlah','$problem','$id_atm','$lokasi','$nama_karyawan','$alamat','$username','$tgl_keluar','$keterangan','$id_dasar','$id_cabang')";		
 			$input = custom_query($dbinput);
 			
 

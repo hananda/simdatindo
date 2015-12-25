@@ -14,6 +14,8 @@ include "koneksi.php";
 			$username = $_POST['id_user'];
 			$tgl_keluar = $_POST['tgl_keluar'];
 			$keterangan = $_POST['keterangan'];
+			$id_cabang = $_POST['id_cabang'];
+			$id_dasar = $_POST['id_dasar'];
 			
 			
 	
@@ -46,6 +48,14 @@ if (trim($nama_karyawan) == '')
 if (trim($tgl_keluar) == '')
 	{
 		$error[] = '- Tanggal Keluar harus diisi';
+	}
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus diisi';
+	}
+if (trim($id_dasar) == '')
+	{
+		$error[] = '- dasar barang keluar harus diisi';
 	}
 
 //dan seterusnya
@@ -90,7 +100,7 @@ else
 				$sqlupdate = "UPDATE tbl_barang SET jumlah = '$ok' WHERE part_number = '$part_number'";
 				$jmlupdate = custom_query($sqlupdate);
 				
-				$dbinput = "UPDATE `tbl_det_keluar` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', problem = '$problem', id_atm = '$id_atm', lokasi = '$lokasi', nama_karyawan = '$nama_karyawan', alamat = '$alamat', username = '$username', tgl_keluar = '$tgl_keluar', keterangan = '$keterangan' WHERE no_form_k = '$noform'";		
+				$dbinput = "UPDATE `tbl_det_keluar` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', problem = '$problem', id_atm = '$id_atm', lokasi = '$lokasi', nama_karyawan = '$nama_karyawan', alamat = '$alamat', username = '$username', tgl_keluar = '$tgl_keluar', keterangan = '$keterangan', id_dasar = '$id_dasar', id_cabang = '$id_cabang' WHERE no_form_k = '$noform'";		
 				$input = custom_query($dbinput);
 			
 			
@@ -102,7 +112,7 @@ else
 				$sqlupdate1 = "UPDATE tbl_barang SET jumlah = '$ok1' WHERE part_number = '$part_number'";
 				$jmlupdate1 = custom_query($sqlupdate1);
 				
-				$dbinput = "UPDATE `tbl_det_keluar` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', problem = '$problem', id_atm = '$id_atm', lokasi = '$lokasi', nama_karyawan = '$nama_karyawan', alamat = '$alamat', username = '$username', tgl_keluar = '$tgl_keluar', keterangan = '$keterangan' WHERE no_form_k = '$noform'";		
+				$dbinput = "UPDATE `tbl_det_keluar` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', problem = '$problem', id_atm = '$id_atm', lokasi = '$lokasi', nama_karyawan = '$nama_karyawan', alamat = '$alamat', username = '$username', tgl_keluar = '$tgl_keluar', keterangan = '$keterangan', id_dasar = '$id_dasar', id_cabang = '$id_cabang' WHERE no_form_k = '$noform'";		
 				$input = custom_query($dbinput);
 				
 				echo '<div align="center" style="color:green; font-size:15px;"><b>Data barang keluar berhasil di edit. silakan klik <a href="detbrgkeluar.php">disini </a>untuk melihat perubahan</b></div><br />';

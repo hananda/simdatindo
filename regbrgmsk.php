@@ -9,6 +9,8 @@ include "koneksi.php";
 			$username = $_POST['id_user'];
 			$tgl_masuk = $_POST['tgl_masuk'];
 			$keterangan = $_POST['keterangan'];
+			$id_cabang = $_POST['id_cabang'];
+			$id_dasar = $_POST['id_dasar'];
 			
 			$dbquery = "SELECT no_form_m FROM tbl_det_masuk WHERE no_form_m = '$noform'";
 			$a=custom_query($dbquery);
@@ -38,6 +40,15 @@ if (trim($tgl_masuk) == '')
 		$error[] = '- Tanggal Masuk harus diisi';
 	}
 
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus diisi';
+	}
+if (trim($id_dasar) == '')
+	{
+		$error[] = '- dasar barang masuk harus diisi';
+	}
+
 //dan seterusnya
 
 if (isset($error)) 
@@ -61,7 +72,7 @@ else
 		$sqlupdate = "UPDATE tbl_barang SET jumlah = ('$hasil' + '$jumlah' )WHERE part_number = '$part_number'";
 		$jmlupdate = custom_query($sqlupdate);
 		
-			$dbinput = "INSERT INTO `tbl_det_masuk`(`no_form_m`, `part_number`, `description`, `jumlah`,   `tgl_masuk`, `username`, `keterangan`) VALUES ('$noform','$part_number','$deskripsi','$jumlah','$tgl_masuk','$username','$keterangan')";		
+			$dbinput = "INSERT INTO `tbl_det_masuk`(`no_form_m`, `part_number`, `description`, `jumlah`,   `tgl_masuk`, `username`, `keterangan`, `id_cabang`, `id_dasar`) VALUES ('$noform','$part_number','$deskripsi','$jumlah','$tgl_masuk','$username','$keterangan','$id_cabang','$id_dasar')";		
 			$input = custom_query($dbinput);
 
 	

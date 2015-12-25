@@ -38,7 +38,7 @@ else
 					if ($total > 0)
 					{
 					?>
-                    <p align="center"><strong>Ditemukan <?php echo $total?> hasil pencarian dengan kata kunci " <?php echo $cari?> "</strong></p>
+                    <p align="center"><strong>Ditemukan <?php echo $total?> hasil pencarian dengan kata kunci " <?php echo $cari; ?> "</strong></p>
 	<table align="center" width="801" border="0">
   
   <tr>
@@ -84,7 +84,7 @@ echo "</table>";
 					if ($total2 > 0)
 					{
 				?>
-<p align="center"><strong>Ditemukan <?php echo $total2?> hasil pencarian dengan kata kunci " <?php echo $cari2?> "</strong></p>
+<p align="center"><strong>Ditemukan <?php echo $total2?> hasil pencarian dengan kata kunci " <?php echo $cari?> "</strong></p>
 	<table align="center" width="801" border="0">
   
   <tr>

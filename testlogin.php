@@ -22,7 +22,8 @@
       $_SESSION['username']     = $r['username'];
       $_SESSION['password']     = $r['password'];
       $_SESSION['level']    = $r['level'];
-	  $_SESSION['timeout']=$waktu+$expired;
+      $_SESSION['id_cabang']    = $r['id_cabang'];
+	     $_SESSION['timeout']=$waktu+$expired;
       header('location:/simdatindo');
     }
     else{ echo print "<script>alert('Username atau password salah. Silakan mencoba kembali.');javascript:window.location='formlogin.php';</script>";}

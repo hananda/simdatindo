@@ -47,9 +47,10 @@ else{
     <td width="189"><div align="center"><strong>Password</strong></div></td>
     <td width="179"><div align="center"><strong>Nama Karyawan</strong></div></td>
     <td width="165"><div align="center"><strong>Level</strong></div></td>
+    <td width="165"><div align="center"><strong>Cabang</strong></div></td>
   </tr>
     <?php
-  $sql =  custom_query("SELECT * FROM tbl_user WHERE username != 'admin'");
+  $sql =  custom_query("SELECT * FROM tbl_user LEFT JOIN tbl_cabang on tbl_user.id_cabang = tbl_cabang.id_cabang WHERE username != 'admin'");
   while ($r = mysqli_fetch_array($sql))
   { $no++
   ?> 
@@ -62,6 +63,7 @@ else{
     <td><div align="center"><?php echo $r['password']; ?></div></td>
     <td><div align="center"><?php echo $r['nama_karyawan']; ?></div></td>
     <td><div align="center"><?php echo $r['level']; ?></div></td>
+    <td><div align="center"><?php echo $r['nama_cabang']; ?></div></td>
     <td width="50"><div align="center"><a href="edituser.php?username=<?php echo $r['username']; ?>">Edit</a></div></td>
     <td width="50"><div align="center"><a href="hapususer.php?username=<?php echo $r['username']; ?>" title="Hapus" onClick="return konfirmasihapus()">Hapus</a></div></td>
   </tr>

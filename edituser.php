@@ -70,8 +70,38 @@ $username = $_GET['username'] ;
       </select></td>
   </tr>
   <tr>
-    <td><strong>Id Karyawan :</strong></td>
-    <td class="field"><input name="id_karyawan" type="text" id="id_karyawan" maxlength="6" value="<?php echo $r['id_karyawan']; ?>"></td>
+    <td><strong>Id Karyawan *:</strong></td>
+    <td class="field">
+    <select name="id_karyawan" id="id_karyawan">
+      <option value="">- Pilih -</option>
+      <?php 
+      $sql1 =  custom_query("SELECT * FROM tbl_karyawan");
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+    ?>
+    
+      <option value="<?php echo $r1['id_karyawan'];?>" <?php echo ($r['id_karyawan'] == $r1['id_karyawan']) ? "selected" : ""; ?>><?php echo $r1['id_karyawan'];?>-<?php echo $r1['nama_karyawan'];?> </option>
+  <?php } 
+      ?>
+    </select>
+    <strong> </strong></td>
+  </tr>
+  <tr>
+    <td><strong>Cabang :</strong></td>
+    <td class="field">
+    <select name="id_cabang" id="id_cabang">
+      <option value="">- Pilih -</option>
+      <?php 
+      $sql1 =  custom_query("SELECT * FROM tbl_cabang");
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+    ?>
+    
+      <option value="<?php echo $r1['id_cabang'];?>" <?php echo ($r['id_cabang'] == $r1['id_cabang']) ? "selected" : ""; ?>><?php echo $r1['nama_cabang'];?> </option><?php
+  } 
+      ?>
+    </select>
+    <strong> </strong></td>
   </tr>
   <tr>
     <td colspan="2"><div align="right">

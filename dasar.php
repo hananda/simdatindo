@@ -44,12 +44,18 @@ else{
 
   
     <td><div align="center"><strong>Nama dasar keterangan barang masuk / keluar</strong></div></td>
+    <td><div align="center"><strong>Jenis</strong></div></td>
     <td colspan="2"><div align="center"><strong>Aksi</strong></div></td>
   </tr>
     <?php
   $sql =  custom_query("SELECT * FROM tbl_dasar");
   while ($r = mysqli_fetch_array($sql))
-  { $no++
+  { $no++;
+  	if ($r['jenis'] == 1) {
+  		$jenis = 'Barang masuk';
+  	}else if ($r['jenis'] == 2) {
+  		$jenis = 'Barang keluar';
+  	}
   ?> 
 
   <tr>
@@ -57,6 +63,7 @@ else{
 	</div></td>
  
     <td><div align="center"><?php echo $r['nama_dasar']; ?></div></td>
+    <td><div align="center"><?php echo $jenis; ?></div></td>
     <td width="50"><div align="center"><a href="editdasar.php?id=<?php echo $r['id_dasar']; ?>">Edit</a></div></td>
     <td width="50"><div align="center"><a href="prosesdasar.php?task=hapus&iddasar=<?php echo $r['id_dasar']; ?>" title="Hapus" onClick="return konfirmasihapus()">Hapus</a></div></td>
   </tr>

@@ -15,8 +15,9 @@ else
 			$lokasi = $_POST['lokasi'];
 			$sn = $_POST['sn'];
 			$install_date = $_POST['install_date'];
+			$id_cabang = $_POST['id_cabang'];
 
-			$query = "UPDATE tbl_atm SET bank='$bank', lokasi='$lokasi', sn='$sn', install_date='$install_date' WHERE id_atm='$id_atm'";
+			$query = "UPDATE tbl_atm SET bank='$bank', lokasi='$lokasi', sn='$sn', install_date='$install_date', id_cabang='$id_cabang' WHERE id_atm='$id_atm'";
 			$query1 = "SELECT sn FROM tbl_atm WHERE sn = '$sn'";
 			
 			$sql= custom_query($query);

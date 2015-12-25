@@ -9,6 +9,8 @@ include "koneksi.php";
 			$tgl_masuk = $_POST['tgl_masuk'];
 			$username = $_POST['id_user'];
 			$keterangan = $_POST['keterangan'];
+			$id_cabang = $_POST['id_cabang'];
+			$id_dasar = $_POST['id_dasar'];
 			
 			
 	
@@ -32,6 +34,15 @@ if (trim($jumlah) == 0)
 if (trim($tgl_masuk) == '')
 	{
 		$error[] = '- Tanggal Masuk harus diisi';
+	}
+
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus diisi';
+	}
+if (trim($id_dasar) == '')
+	{
+		$error[] = '- dasar barang masuk harus diisi';
 	}
 
 //dan seterusnya
@@ -70,7 +81,7 @@ else
 				$sqlupdate = "UPDATE tbl_barang SET jumlah = '$ok' WHERE part_number = '$part_number'";
 				$jmlupdate = custom_query($sqlupdate);
 				
-				$dbinput = "UPDATE `tbl_det_masuk` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', tgl_masuk = '$tgl_masuk', username = '$username', keterangan = '$keterangan' WHERE no_form_m = '$noform'";		
+				$dbinput = "UPDATE `tbl_det_masuk` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', tgl_masuk = '$tgl_masuk', username = '$username', keterangan = '$keterangan', id_cabang = '$id_cabang', id_dasar = '$id_dasar' WHERE no_form_m = '$noform'";		
 				$input = custom_query($dbinput);
 			
 			
@@ -82,18 +93,26 @@ else
 				$sqlupdate1 = "UPDATE tbl_barang SET jumlah = '$ok1' WHERE part_number = '$part_number'";
 				$jmlupdate1 = custom_query($sqlupdate1);
 				
-				$dbinput = "UPDATE `tbl_det_masuk` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', tgl_masuk = '$tgl_masuk', username = '$username', keterangan = '$keterangan' WHERE no_form_m = '$noform'";		
+				$dbinput = "UPDATE `tbl_det_masuk` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', tgl_masuk = '$tgl_masuk', username = '$username', keterangan = '$keterangan', id_cabang = '$id_cabang', id_dasar = '$id_dasar' WHERE no_form_m = '$noform'";		
 				$input = custom_query($dbinput);
 				
 				echo '<div align="center" style="color:green; font-size:15px;"><b>Data barang masuk berhasil di edit. silakan klik <a href="detbrgmasuk.php">disini </a>untuk melihat perubahan</b></div><br />';
 			}
 			else
 			{
-				$dbinput = "UPDATE `tbl_det_masuk` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', tgl_masuk = '$tgl_masuk', username = '$username', keterangan = '$keterangan' WHERE no_form_k = '$noform'";		
+				$dbinput = "UPDATE `tbl_det_masuk` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', tgl_masuk = '$tgl_masuk', username = '$username', keterangan = '$keterangan', id_cabang = '$id_cabang', id_dasar = '$id_dasar' WHERE no_form_m = '$noform'";		
 				$input = custom_query($dbinput);
+				if ($input)
+					{
+						echo "<script>alert('Selamat, data barang masuk telah terupdate');javascript:window.location='status.php';</script>";
+					}
+					else
+					{
+						// echo $dbinput;
+						echo "<script>alert('Maaf, data barang masuk gagal terupdate');javascript:window.location='status.php';</script>";
+					}
 			}
 			
-		
 }
 die();
 ?>

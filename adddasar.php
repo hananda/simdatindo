@@ -74,6 +74,11 @@ $(document).ready(function() {
       <input type="text" name="nmdasar" id="nmdasar"></td>
   </tr>
   <tr>
+    <td width="123"><strong>Jenis :</strong></td>
+        <td  class="field" width="255" bgcolor="#FFFFFF">
+      <select name="jenis"><option value="1">Barang Masuk</option><option value="2">Barang Keluar</option></select></td>
+  </tr>
+  <tr>
     <td colspan="2"><div align="right">
       <strong>
       <input type="submit" name="tambah" id="tambah" value="Tambah">

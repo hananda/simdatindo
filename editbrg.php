@@ -76,6 +76,29 @@
     </span></td>
   </tr>
   <tr>
+    <td><strong>Cabang :</strong></td>
+    <td class="field">
+    <select name="id_cabang" id="id_cabang">
+      <option value="">- Pilih -</option>
+      <?php 
+      $query = "SELECT * FROM tbl_cabang";
+      	if ($_SESSION[level] == "operator") 
+		{
+		  $query.= " WHERE id_cabang = ".$_SESSION['id_cabang'];
+		}
+		// echo $query;
+		$sql1 =  custom_query($query);
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+    ?>
+    
+      <option value="<?php echo $r1['id_cabang'];?>" <?php echo ($r['id_cabang'] == $r1['id_cabang']) ? "selected" : ""; ?>><?php echo $r1['nama_cabang'];?> </option><?php
+  } 
+      ?>
+    </select>
+    <strong> </strong></td>
+  </tr>
+  <tr>
     <td  bgcolor="#FFFFFF" height="34" colspan="2"><div align="right"> <input name="simpan" type="submit" value="Simpan" id="simpan"></div></td>
   </tr>
     </table>

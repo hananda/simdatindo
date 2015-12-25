@@ -53,12 +53,12 @@ include "atas.php";
 		  ?>
           <option value="dkar">Data Karyawan</option>
           <option value="duser">Data User</option>
+          <option value="dcbng">Data Cabang</option>
           <?php
 		  }
 		  ?>
           <option value="dpart">Data Sparepart</option>
           <option value="datm">Data ATM</option>
-          <option value="dcbng">Data Cabang</option>
           <option value="dket">Data Keterangan</option>
           <option value="ddsr">Data Dasar Barang masuk / keluar</option>
           <option value="brgmsk">Barang Masuk</option>

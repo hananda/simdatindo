@@ -8,6 +8,7 @@ include "koneksi.php";
 			$nama_karyawan = $_POST['nama_karyawan'];
 			$level = $_POST['level'];
 			$id_karyawan = $_POST['id_karyawan'];
+			$id_cabang = $_POST['id_cabang'];
 			
 			$dbquery = "SELECT username FROM tbl_user WHERE username = '$username'";
 			$a=custom_query($dbquery);
@@ -55,6 +56,10 @@ if (trim($id_karyawan) == '')
 	{
 		$error[] = '- ID Karyawan harus dipilih';
 	}
+if (trim($id_cabang) == '')
+	{
+		$error[] = '- cabang harus dipilih';
+	}
 
 //dan seterusnya
 
@@ -66,7 +71,7 @@ if (isset($error)) {
 	maka perintah SQL INSERT bisa ditulis di sini
 	*/
  	
-			$dbinput = "INSERT INTO tbl_user (username,password,nama_karyawan,level,id_karyawan)VALUES ('$username','$password','$nama_karyawan','$level','$id_karyawan')";		
+			$dbinput = "INSERT INTO tbl_user (username,password,nama_karyawan,level,id_karyawan,id_cabang)VALUES ('$username','$password','$nama_karyawan','$level','$id_karyawan','$id_cabang')";		
 	$input=custom_query($dbinput);
 					
 	echo '<div align="center" style="color:green; font-size:15px;"><b>Data User berhasil di tambah. silakan klik <a href="user.php">disini </a>untuk melihat perubahan</b></div><br />';

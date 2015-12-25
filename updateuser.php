@@ -21,7 +21,8 @@ else
 		$nama_karyawan = $_POST['nama_karyawan'];
 		$level = $_POST['level'];
 		$id_karyawan = $_POST['id_karyawan'];
-		$dquery = "UPDATE tbl_user SET password='$password', nama_karyawan='$nama_karyawan', level='$level', id_karyawan='$id_karyawan' WHERE username='$username'";
+		$id_cabang = $_POST['id_cabang'];
+		$dquery = "UPDATE tbl_user SET password='$password', nama_karyawan='$nama_karyawan', level='$level', id_karyawan='$id_karyawan', id_cabang = '$id_cabang' WHERE username='$username'";
 
 		$sql= custom_query($dquery);
 			if ($sql)

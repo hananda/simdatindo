@@ -14,8 +14,9 @@ else
 	$part_number = $_POST['part_number'];
 	$description = $_POST['deskripsi'];
 	$jumlah = $_POST['jumlah'];
+	$id_cabang = $_POST['id_cabang'];
 
-	$query = "UPDATE tbl_barang SET description='$description', jumlah='$jumlah' WHERE part_number='$part_number'";
+	$query = "UPDATE tbl_barang SET description='$description', jumlah='$jumlah', id_cabang='$id_cabang' WHERE part_number='$part_number'";
 	$sql = custom_query($query);
 
 	if ($description="" || $jumlah="")

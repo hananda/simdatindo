@@ -93,13 +93,53 @@ $(document).ready(function() {
       <input name="deskripsi" type="text" id="deskripsi" value="<?php echo $r['description'];?>" readonly>
     </span></div></td>
   </tr>
+   <tr>
+    <td><strong>Dasar Barang masuk</strong></td>
+    <td class="field">
+    <select name="id_dasar" id="id_dasar">
+      <option value="">- Pilih -</option>
+      <?php 
+      $query = "SELECT * FROM tbl_dasar WHERE jenis = 1";
+		$sql1 =  custom_query($query);
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+    ?>
+    
+      <option value="<?php echo $r1['id_dasar'];?>" <?php echo ($r['id_dasar'] == $r1['id_dasar']) ? "selected" : ""; ?>><?php echo $r1['nama_dasar'];?> </option><?php
+  } 
+      ?>
+    </select>
+    <strong> </strong></td>
+  </tr> 
   <tr>
     <td height="34"><strong>Jumlah</strong></td>
     <td><span class="field">
       <input name="jumlah" type="text" id="jumlah" value="<?php echo $r['jumlah'];?>">
     </span></td>
   </tr>
+   <tr>
+    <td><strong>Cabang</strong></td>
+    <td class="field">
+    <select name="id_cabang" id="id_cabang">
+      <option value="">- Pilih -</option>
+      <?php 
+      $query = "SELECT * FROM tbl_cabang";
+      	if ($_SESSION[level] == "operator") 
+		{
+		  $query.= " WHERE id_cabang = ".$_SESSION['id_cabang'];
+		}
+		// echo $query;
+		$sql1 =  custom_query($query);
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+    ?>
     
+      <option value="<?php echo $r1['id_cabang'];?>" <?php echo ($r['id_cabang'] == $r1['id_cabang']) ? "selected" : ""; ?>><?php echo $r1['nama_cabang'];?> </option><?php
+  } 
+      ?>
+    </select>
+    <strong> </strong></td>
+  </tr> 
   <tr>
     
     <td height="34"><strong>Tgl Masuk</strong></td>
@@ -111,10 +151,27 @@ $(document).ready(function() {
     </span></td>
   </tr>
   <tr>
-    <td height="34"><strong>Keterangan</strong></td>
+    <td><strong>Keterangan</strong></td>
     <td class="field">
-      <input name="keterangan" type="text" id="keterangan" value="<?php echo $r['keterangan'];?>">
-    </td>
+    <select name="keterangan" id="keterangan">
+      <option value="">- Pilih -</option>
+      <?php 
+      	$query = "SELECT * FROM tbl_keterangan";
+  //     	if ($_SESSION[level] == "operator") 
+		// {
+		//   $query.= " WHERE id_cabang = ".$_SESSION['id_cabang'];
+		// }
+		// echo $query;
+		$sql1 =  custom_query($query);
+  while ($r1 = mysqli_fetch_array($sql1))
+  {
+	  ?>
+    
+      <option value="<?php echo $r1['id_keterangan'];?>" <?php echo ($r['keterangan'] == $r1['id_keterangan']) ? "selected" : ""; ?>><?php echo $r1['nama_keterangan'];?> </option><?php
+  }	
+  	  ?>
+    </select>
+    <strong> </strong></td>
   </tr>
   <tr>
    <td  bgcolor="#FFFFFF" height="34" colspan="2"><div align="center"> 

@@ -42,6 +42,7 @@
         <td width="135"><div align="center"><strong>ID</strong></div></td>
     	<td width="173"><div align="center"><strong>BANK</strong></div></td>
     	<td width="315"><div align="center"><strong>Lokasi</strong></div></td>
+    	<td width="315"><div align="center"><strong>Cabang</strong></div></td>
     	<td width="175"><div align="center"><strong>Serial Number</strong></div></td>
     	<td width="170"><div align="center"><strong>Install Date</strong></div></td>
   	</font>
@@ -51,16 +52,17 @@
   	if(isset($_POST['pilih']))
 	{
 		$bank1 = $_POST['Bank'];
+		$id_cabang = $_POST['id_cabang'];
 		if($bank1 == ALL)
 		{
 
-		$query = "SELECT * FROM tbl_atm ORDER BY bank";
+		$query = "SELECT * FROM tbl_atm LEFT JOIN tbl_cabang ON tbl_atm.id_cabang = tbl_cabang.id_cabang WHERE tbl_atm.id_cabang = '$id_cabang' ORDER BY bank";
 
 		$result = custom_query($query) or die('Error');
 		}
 		else
 		{
-		$query  = "SELECT * FROM tbl_atm WHERE bank = '$bank1' ORDER BY id_atm";
+		$query  = "SELECT * FROM tbl_atm LEFT JOIN tbl_cabang ON tbl_atm.id_cabang = tbl_cabang.id_cabang WHERE bank = '$bank1' AND tbl_atm.id_cabang = '$id_cabang' ORDER BY id_atm";
 
 		$result = custom_query($query) or die('Error');
 		}
@@ -73,6 +75,7 @@
     <td><div align="center"><?php echo $r1['id_atm']; ?></div></td>
     <td><div align="center"><?php echo $r1['bank']; ?></div></td>
     <td><div align="left"><?php echo $r1['lokasi']; ?></div></td>
+    <td><div align="left"><?php echo $r1['nama_cabang']; ?></div></td>
     <td><div align="center"><?php echo $r1['sn']; ?></div></td>
     <td><div align="center"><?php echo $r1['install_date']; ?></div></td>
 	<?php 

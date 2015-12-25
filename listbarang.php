@@ -46,8 +46,12 @@ else{
 		$offset = ($noPage - 1) * $dataPerPage;
 
 		// query SQL untuk menampilkan data perhalaman sesuai offset
-
-		$query = "SELECT * FROM tbl_barang ORDER BY part_number LIMIT $offset, $dataPerPage";
+		$where = "";
+		if ($_SESSION[level] == "operator") 
+		{
+		  $where = " WHERE tbl_barang.id_cabang = ".$_SESSION['id_cabang'];
+		}
+		$query = "SELECT tbl_barang.*,tbl_cabang.nama_cabang FROM tbl_barang LEFT JOIN tbl_cabang ON tbl_barang.id_cabang = tbl_cabang.id_cabang $where ORDER BY part_number LIMIT $offset, $dataPerPage";
 
 		$result = custom_query($query) or die('Error');
 
@@ -60,6 +64,7 @@ else{
     <td width="127"><div align="center"><strong>Part Number</strong></div></td>
     <td width="458"><div align="center"><strong>Deskripsi</strong></div></td>
     <td width="83"><div align="center"><strong>Jumlah</strong></div></td>
+    <td width="83"><div align="center"><strong>Cabang</strong></div></td>
   </font></tr>
   
      <?php 
@@ -72,6 +77,7 @@ else{
     <td><div align="center"><?php echo $r['part_number']; ?></div></td>
     <td><div align="left"><?php echo $r['description']; ?></div></td>
     <td><div align="center"><?php echo $r['jumlah']; ?></div></td>
+    <td><div align="center"><?php echo $r['nama_cabang']; ?></div></td>
     <?php
 	if (($_SESSION[level] == "admin") || ($_SESSION[level] == "operator"))
 {
@@ -105,7 +111,7 @@ else{
 <div align="center"><?php
 // mencari jumlah semua data dalam tabel guestbook
 
-$query   = "SELECT COUNT(*) AS jumData FROM tbl_barang";
+$query   = "SELECT COUNT(*) AS jumData FROM tbl_barang $where";
 $hasil  = custom_query($query);
 $data     = mysqli_fetch_array($hasil);
 
