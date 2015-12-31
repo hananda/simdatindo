@@ -3,7 +3,7 @@
 include "koneksi.php";
 //validasi
 			$noform = $_POST['noform'];
-			$part_number = $_POST['part_number'];
+			$part_number = $_POST['partnumber2'];
 			$deskripsi = $_POST['deskripsi'];
 			$jumlah = $_POST['jumlah'];
 			$id_atm = $_POST['id_atm'];
@@ -84,7 +84,7 @@ else
 		$update1 = custom_query($tblupdate1);
 		 while ($r1 = mysqli_fetch_array($update1))
   {
-		$hasil1 = $r1['jumlah'];
+		$hasil1 = @$r1['jumlah'];
   }
   
 		if ($jumlah > $hasil1)
@@ -93,7 +93,9 @@ else
 		}
   		else
 		{
-			
+			// echo $jumlah;
+			// echo $hasil;
+
 			if ($jumlah > $hasil)
 			{
 				$ok = ($hasil1 - ($jumlah - $hasil ));
@@ -115,6 +117,10 @@ else
 				$dbinput = "UPDATE `tbl_det_keluar` SET part_number = '$part_number', description = '$deskripsi', jumlah = '$jumlah', problem = '$problem', id_atm = '$id_atm', lokasi = '$lokasi', nama_karyawan = '$nama_karyawan', alamat = '$alamat', username = '$username', tgl_keluar = '$tgl_keluar', keterangan = '$keterangan', id_dasar = '$id_dasar', id_cabang = '$id_cabang' WHERE no_form_k = '$noform'";		
 				$input = custom_query($dbinput);
 				
+				echo '<div align="center" style="color:green; font-size:15px;"><b>Data barang keluar berhasil di edit. silakan klik <a href="detbrgkeluar.php">disini </a>untuk melihat perubahan</b></div><br />';
+			}
+
+			if ($jumlah == $hasil) {
 				echo '<div align="center" style="color:green; font-size:15px;"><b>Data barang keluar berhasil di edit. silakan klik <a href="detbrgkeluar.php">disini </a>untuk melihat perubahan</b></div><br />';
 			}
 			

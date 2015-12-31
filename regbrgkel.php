@@ -3,7 +3,7 @@
 include "koneksi.php";
 //validasi
 			$noform = $_POST['noform'];
-			$part_number = $_POST['part_number'];
+			$part_number = $_POST['partnumber2'];
 			$deskripsi = $_POST['deskripsi'];
 			$jumlah = $_POST['jumlah'];
 			$id_atm = $_POST['id_atm'];
@@ -81,7 +81,7 @@ else
 		$update = custom_query($tblupdate);
 		 while ($r = mysqli_fetch_array($update))
   {
-		$hasil = $r['jumlah'];
+		$hasil = @$r['jumlah'];
   }
   		if($jumlah > $hasil)
 		{

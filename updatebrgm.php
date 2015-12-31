@@ -3,7 +3,7 @@
 include "koneksi.php";
 //validasi
 			$noform = $_POST['noform'];
-			$part_number = $_POST['part_number'];
+			$part_number = $_POST['partnumber2'];
 			$deskripsi = $_POST['deskripsi'];
 			$jumlah = $_POST['jumlah'];
 			$tgl_masuk = $_POST['tgl_masuk'];

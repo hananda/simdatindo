@@ -2,8 +2,8 @@
 <?php
 include "koneksi.php";
 //validasi
-			$noform = $_POST['noform'];
-			$part_number = $_POST['part_number'];
+				$noform = $_POST['noform'];
+			$part_number = $_POST['partnumber2'];
 			$deskripsi = $_POST['deskripsi'];
 			$jumlah = $_POST['jumlah'];
 			$username = $_POST['id_user'];
@@ -66,7 +66,7 @@ else
 		$update = custom_query($tblupdate);
 		 while ($r = mysqli_fetch_array($update))
   {
-		$hasil = $r['jumlah'];
+		$hasil = @$r['jumlah'];
   }
 		
 		$sqlupdate = "UPDATE tbl_barang SET jumlah = ('$hasil' + '$jumlah' )WHERE part_number = '$part_number'";

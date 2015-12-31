@@ -1,6 +1,6 @@
 <?php
 
-include '../koneksi.php';
+//include '../koneksi.php';
 
 function ambilDeskripsi()
 {
@@ -15,6 +15,23 @@ function ambilDeskripsi()
 	}
 }
 
+function ambilDeskripsiOnly()
+{
+	$qry = "SELECT * FROM tbl_barang";
+	$sql = custom_query($qry);
+
+	$results = array();
+	if($sql){
+		while ($array = mysqli_fetch_array($sql))
+		{
+			
+			$results[] = $array;
+			
+		}		  
+
+		return $results;
+	}
+}
 
 function ambilLokasi()
 {
@@ -45,7 +62,8 @@ function ambilAlamat()
 }
 
 
-$switchFunction = $_POST['function'];
+$switchFunction = (isset($_POST['function']) ? $_POST['function'] : "");
+
 switch($switchFunction)
 {
 	case "ambilDeskripsi":
@@ -59,7 +77,7 @@ switch($switchFunction)
 	break;
 
 	default:
-		echo "error";
+		//echo "";
 	break;
 }
 
